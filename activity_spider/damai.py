@@ -95,7 +95,7 @@ class DamaiSpider(object):
                                                         except:
                                                                 title='待定'
                                                         try:
-                                                                location=soup.find(attrs={'itemprop':'location'}).get_text().strip().encode('utf-8') # get the location
+                                                                location=soup.find(attrs={'itemprop':'place'}).get_text().strip().encode('utf-8') # get the place
                                                         except:
                                                                 location='待定'
                                                         
@@ -162,7 +162,7 @@ class DamaiSpider(object):
                                                                         date_time,start_time = getAvosTimeInfo(currentPerformTime)
 
                                                                         dataDict = {"name":title,"date":date_time,
-                                                                        "start_time":start_time,"ticket":currentPerformPriceInfo,"region":location,"location":gps2GeoPoint(lat,lng),"category":TransferDict(mcidName)}
+                                                                        "start_time":start_time,"ticket":currentPerformPriceInfo,"region":location,"place":gps2GeoPoint(lat,lng),"category":TransferDict(mcidName)}
                                                                         try:
                                                                                 self.avosManager.saveActivity(dataDict)
                                                                         except:
@@ -179,7 +179,7 @@ class DamaiSpider(object):
                                                         mcidName=self.mcidDict[mcid]
                                                         ccidName=self.ccidDict[ccid]
                                                         titleName=title
-                                                        placeName=location
+                                                        placeName=place
                                                         data=[{"mcid": mcidName},
                                                                   {"ccid": ccidName},
                                                                   {"title": titleName},

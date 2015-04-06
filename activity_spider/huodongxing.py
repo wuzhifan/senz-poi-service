@@ -123,7 +123,7 @@ class HuodongxingSpider(object):
 						continue
 
 					dataDict = {"name":eventTitle,"date":date_time,
-					"start_time":start_time,"end_time":end_time,"ticket":"","region":eventLocation,"location":gps2GeoPoint(latitude,longitude),"category":categoryCn}
+					"start_time":start_time,"end_time":end_time,"ticket":"","region":eventLocation,"place":gps2GeoPoint(latitude,longitude),"category":categoryCn}
 					try:
 						self.avosManager.saveActivity(dataDict)
 					except:

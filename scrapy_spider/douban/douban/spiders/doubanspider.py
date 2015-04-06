@@ -43,7 +43,7 @@ class DoubanSpider(CrawlSpider):
                         if itemprop not in eventTimeDict.keys():
                             continue
                         eventTimeDict[itemprop] = DateTimeInfo.replace("T"," ")
-                    eventLocation = eventInfo.find(attrs={'itemprop':'location'}).get("content","")
+                    eventLocation = eventInfo.find(attrs={'itemprop':'place'}).get("content","")
                 except:
                     continue
 
@@ -63,7 +63,7 @@ class DoubanSpider(CrawlSpider):
             #item['end_time'] = end_time
             item['ticket']= ticketFee
             item['region'] = eventLocation
-            #item['location'] =
+            #item['place'] =
             #item['category'] =
             item['source'] = DoubanSpider.__name__
 

@@ -59,7 +59,7 @@ class DoubanSpider(object):
 								if itemprop not in eventTimeDict.keys():
 									continue
 								eventTimeDict[itemprop] = DateTimeInfo.replace("T"," ")
-							eventLocation = eventInfo.find(attrs={'itemprop':'location'}).get("content","")
+							eventLocation = eventInfo.find(attrs={'itemprop':'place'}).get("content","")
 						except:
 							continue
 						try:
@@ -74,7 +74,7 @@ class DoubanSpider(object):
 						dataDict = {"name":eventTitle,"date":date_time,
 						"start_time":start_time,"end_time":end_time,"ticket":ticketFee,
                         "region":eventLocation,
-                        "location":gps2GeoPoint(latitude,longitude),
+                        "place":gps2GeoPoint(latitude,longitude),
                         "category":categoryCn,
                         "source" : DoubanSpider.__name__}
 
